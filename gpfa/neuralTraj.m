@@ -35,7 +35,7 @@ function result = neuralTraj(runIdx, dat, varargin)
   method        = 'gpfa'; 
   binWidth      = 20; % in msec
   numFolds      = 0;
-  xDim          = 8;
+  xDim          = 5;
   extraOpts     = assignopts(who, varargin);
 
   fprintf('\n---------------------------------------\n');

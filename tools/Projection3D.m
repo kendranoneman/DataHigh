@@ -367,7 +367,7 @@ function evolve_button_Callback(hObject, eventdata, handles)
     end
         
     
-    fading_length = 10;
+    fading_length = 10; 
     
     numPoints = max(cellfun('size',{handles.D.data},2)); %find the longest trajectory
 
@@ -411,6 +411,7 @@ function evolve_button_Callback(hObject, eventdata, handles)
         end
         
         pause(.05);
+        %pause(0.1);
         
         if (~ishandle(handles.Projection3dFig))
             % user has closed out of Projection3d during a
@@ -591,11 +592,10 @@ function save_movie_button_Callback(hObject, eventdata, handles)
     % get the framerate from the user
     framerate = inputdlg('Input framerate: 1/binWidth (default: 30Hz)', 'Framerate', 1, {'30'});
     if (~all(ismember(framerate, '0123456789')))  %a number was not entered
-        framerate = 30;
+        framerate = 10;
     else
         framerate = str2num(framerate);
     end
-    
 
     if (strcmp(ext, '.avi')) % save as .avi file
         handles.videowriter = VideoWriter(fullfile(path, [file ext]), 'Motion JPEG AVI');
@@ -617,7 +617,7 @@ function save_movie_button_Callback(hObject, eventdata, handles)
         disp('Error occurred saving movie.  Incorrect file extension.');
         return;
     end
-
+    
     handles.videowriter.FrameRate = framerate;
     
     handles.record_movie = true;
