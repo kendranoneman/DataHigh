@@ -71,7 +71,7 @@ function ZoomRotate_OpeningFcn(hObject, eventdata, handles, varargin)
     guidata(hObject, handles);
     conds = unique({hd.D.condition});
     % set bounds to highest var in PC1 and lowest in the last PC
-    [u sc lat] = princomp([hd.D(ismember({hd.D.condition}, conds(hd.selected_conds))).data]');
+    [u sc lat] = pca([hd.D(ismember({hd.D.condition}, conds(hd.selected_conds))).data]');
     set(handles.zoom_slider, 'Max', 5*sqrt(lat(1)));
     set(handles.zoom_slider, 'Min', sqrt(lat(end)));
     if (hd.max_limit < sqrt(lat(end)) || hd.max_limit > 5*sqrt(lat(1)))  % the max_limit needs to be updated
