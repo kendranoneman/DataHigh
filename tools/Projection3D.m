@@ -590,12 +590,15 @@ function save_movie_button_Callback(hObject, eventdata, handles)
     rotate3d(handles.mainAxes, 'off');  % do not allow user to rotate during movie production
     
     % get the framerate from the user
-    framerate = inputdlg('Input framerate: 1/binWidth (default: 30Hz)', 'Framerate', 1, {'30'});
-    if (~all(ismember(framerate, '0123456789')))  %a number was not entered
-        framerate = 10;
-    else
-        framerate = str2num(framerate);
-    end
+%     framerate = inputdlg('Input framerate: 1/binWidth (default: 30Hz)', 'Framerate', 1, {'30'});
+%     if (~all(ismember(framerate, '0123456789')))  %a number was not entered
+%         framerate = 6;
+%     else
+%         framerate = str2num(framerate);
+%     end
+
+    fr = inputdlg('Input framerate: 1/binWidth (default: 30Hz)', 'Framerate', 1, {'30'});
+    framerate = str2num(fr{1});
 
     if (strcmp(ext, '.avi')) % save as .avi file
         handles.videowriter = VideoWriter(fullfile(path, [file ext]), 'Motion JPEG AVI');
