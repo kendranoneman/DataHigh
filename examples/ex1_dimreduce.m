@@ -23,9 +23,15 @@
 %  8. See ex1_visualize.m to visualize neural states with DataHigh.
 %
 
-cd ..
-load('./data/ex1_spikecounts.mat');
+pulse = 1;
+epoch = 'f1';
+angle = 000;
+
+stuff = '/Users/kendranoneman/Projects/mayo';
+load(sprintf('%s/data/manifold/take1/p%2.2d-e%s-d%3.3d.mat',stuff,pulse,epoch,angle));
+
+%load('./data/ex1_spikecounts.mat');
 % D(itrial).data : (num_neurons x 400ms)
 % D(itrial).condition : 'reach1', 'reach2', ..., 'reach7'
 DataHigh(D, 'DimReduce');
-cd ./examples
+% cd ./examples

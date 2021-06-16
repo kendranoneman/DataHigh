@@ -598,7 +598,7 @@ function save_movie_button_Callback(hObject, eventdata, handles)
 %     end
 
     fr = inputdlg('Input framerate: 1/binWidth (default: 30Hz)', 'Framerate', 1, {'30'});
-    framerate = str2num(fr{1});
+    framerate = str2num(fr{:});
 
     if (strcmp(ext, '.avi')) % save as .avi file
         handles.videowriter = VideoWriter(fullfile(path, [file ext]), 'Motion JPEG AVI');
